@@ -1,1 +1,3 @@
-<app-login></app-login>
+<app-login *ngIf="loggingIn && !registering"></app-login>
+<app-registration *ngIf="registering"></app-registration>
+<app-homepage *ngIf="!loggingIn && !registering"></app-homepage>

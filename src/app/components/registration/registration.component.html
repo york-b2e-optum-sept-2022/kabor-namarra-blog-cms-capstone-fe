@@ -1,1 +1,15 @@
-<p>registration works!</p>
+<div>
+  Username:
+  <input [(ngModel)]="account.username" placeholder="username">
+  <br>
+  Password:
+  <input [(ngModel)]="account.password" placeholder="password">
+  <br>
+  Firstname:
+  <input [(ngModel)]="account.firstname" placeholder="firstname">
+  <br>
+  Lastname:
+  <input [(ngModel)]="account.lastname" placeholder="lastname">
+</div>
+<button (click)="onBackClick()">Back</button>
+<button (click)="onRegisterClick()">Register</button>

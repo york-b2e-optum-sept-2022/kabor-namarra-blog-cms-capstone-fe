@@ -1,0 +1,8 @@
+<button (click)="onBackClick()">Back</button>
+<h1>
+  {{blog.title}}
+</h1>
+<div>{{blog.createdDate | date}}</div>
+<div *ngIf="blog.updatedDate"> updated: {{blog.updatedDate | date}}</div>
+<h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
+<p>{{blog.body}}</p>

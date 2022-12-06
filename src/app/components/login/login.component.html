@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div>
+  Username:
+  <input [(ngModel)]="username" placeholder="username">
+  <br>
+  Password:
+  <input [(ngModel)]="password" placeholder="password">
+</div>
+<button (click)="onBackClick()">Back</button>
+<button (click)="onRegisterClick()">Register</button>
+<button (click)="onLoginClick()">Login</button>
