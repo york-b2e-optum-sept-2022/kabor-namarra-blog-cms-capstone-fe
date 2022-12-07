@@ -1,8 +1,56 @@
 <button (click)="onBackClick()">Back</button>
-<h1>
-  {{blog.title}}
-</h1>
-<div>{{blog.createdDate | date}}</div>
-<div *ngIf="blog.updatedDate"> updated: {{blog.updatedDate | date}}</div>
-<h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
-<p>{{blog.body}}</p>
+
+<div *ngIf="!editing">
+  <div *ngIf="account?.id === blog.author.id">
+    <div *ngIf="!deleteCheck">
+      <button  (click)="onEditClick()">Edit</button>
+      <button  (click)="onDeleteCheck()">Delete</button>
+    </div>
+    <div *ngIf="deleteCheck">
+      Are you sure?
+      <button  (click)="onDeleteCheck()">No</button>
+      <button  (click)="onDeleteClick()">Yes</button>
+    </div>
+  </div>
+
+  <div class="blogSection">
+    <h1>
+      {{blog.title}}
+    </h1>
+    <div>{{blog.createdDate | date}}</div>
+    <div *ngIf="blog.updatedDate"> updated: {{blog.updatedDate | date}}</div>
+    <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
+    <p>{{blog.body}}</p>
+
+  </div>
+
+
+  <div *ngIf="account">
+    Leave comment:
+    <textarea [(ngModel)]="commentInput" placeholder="comment"></textarea>
+    <button (click)="onCommentClick()">Comment</button>
+    {{errorDisplay}}
+  </div>
+  <div *ngIf="!account">
+    Log in to Leave comment
+  </div>
+
+  <app-comment *ngFor="let comment of blog.comments"
+               [comment] = comment
+               [account] = account
+  ></app-comment>
+</div>
+
+<div *ngIf="editing && account">
+  <div class="blogSection">
+    <button (click)="onEditClick()">Cancel</button>
+    <button (click)="onSaveClick()">Save</button>
+    <h1>
+      <input [(ngModel)]="blog.title">
+    </h1>
+    <div>{{blog.createdDate | date}}</div>
+    <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
+    <textarea [(ngModel)]="blog.body"></textarea>
+
+  </div>
+</div>

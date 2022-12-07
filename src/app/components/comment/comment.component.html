@@ -1,0 +1,27 @@
+
+<div *ngIf="comment.author.id === account?.id && !editingComment">
+  <button (click)="onEditClick()">Edit</button>
+  <button (click)="onDeleteClick()">Delete</button>
+  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
+  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
+  <p *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</p>
+  <p>{{comment.body}}</p>
+</div>
+
+
+<div *ngIf="comment.author.id !== account?.id && !editingComment">
+  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
+  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
+  <p *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</p>
+  <p>{{comment.body}}</p>
+</div>
+
+
+<div *ngIf="comment.author.id === account?.id && editingComment">
+  <button (click)="onEditClick()">Cancel</button>
+  <button (click)="onSaveClick()">Save</button>
+  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
+  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
+  <textarea [(ngModel)]="comment.body"></textarea>
+</div>
+

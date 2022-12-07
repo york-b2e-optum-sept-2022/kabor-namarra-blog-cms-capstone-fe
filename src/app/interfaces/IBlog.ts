@@ -1,4 +1,5 @@
 import {IAccount} from "./IAccount";
+import {IComment} from "./IComment";
 
 export interface IBlog{
   id?: number,
@@ -8,6 +9,6 @@ export interface IBlog{
   updatedDate: Date,
   author: IAccount,
   views: number,
-  // comments: []
+  comments: IComment[]
 
 }
