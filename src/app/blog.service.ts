@@ -52,6 +52,7 @@ export class BlogService {
       next: (blog) => {
         this.blogViewed = blog
         this.getBlogViewed()
+        this.getBlogs()
       },
       error: (err) => {
         console.error(err)

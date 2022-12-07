@@ -34,7 +34,7 @@ export class HttpService {
   }
 
   updateBlog(blog: IBlog){
-    return this.http.put("http://localhost:8080/api/blog", {id:blog.id, title:blog.title,body:blog.body})as Observable<IBlog>
+    return this.http.put("http://localhost:8080/api/blog", {id:blog.id, title:blog.title,body:blog.body, viewerID: blog.viewerID})as Observable<IBlog>
   }
 
   deleteBlog(blogID: number){

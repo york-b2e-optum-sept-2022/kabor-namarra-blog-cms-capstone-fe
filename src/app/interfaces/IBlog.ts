@@ -8,7 +8,7 @@ export interface IBlog{
   createdDate: Date,
   updatedDate: Date,
   author: IAccount,
-  views: number,
+  viewerID: number[],
   comments: IComment[]
 
 }

@@ -14,6 +14,7 @@ import {IComment} from "../../interfaces/IComment";
 export class BlogComponent implements OnInit, OnDestroy{
 
   blog!: IBlog;
+  blogViews: number = 0;
   commentInput: string = "";
   errorDisplay: string = "";
   account: IAccount|null = null;
@@ -32,6 +33,9 @@ export class BlogComponent implements OnInit, OnDestroy{
         return d.getTime() - c.getTime();
       });
       this.blog = blog;
+      if(blog.viewerID) {
+        this.blogViews = blog.viewerID.length
+      }
     })
     this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe( account =>{
       this.account = account;
@@ -46,6 +50,19 @@ export class BlogComponent implements OnInit, OnDestroy{
     this.blogService.getBlogViewed()
   }
   ngOnDestroy() {
+    if(this.blog.author.id !== this.account?.id){
+      // console.log("id!")
+      if(this.account?.id) {
+        // console.log("id good")
+        if(!this.blog.viewerID.find(element => element === this.account?.id)) {
+          this.blog.viewerID.push(this.account.id)
+          console.log(this.blog)
+          this.blogService.updateBlog(this.blog)
+          console.log("updated views")
+        }
+      }
+    }
+    console.log("out")
     this.onDestroy.next(null);
     this.onDestroy.complete();
   }
