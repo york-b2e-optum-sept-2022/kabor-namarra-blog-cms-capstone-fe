@@ -1,27 +1,38 @@
 <button *ngIf="!account" (click)="onLoginClick()">Login</button>
 <button *ngIf="account" (click)="onLogoutClick()">Sign out</button>
 <button (click)="onClickCheck()">Check</button>
-<button *ngIf="account && !creatingBlog && !viewingBlog && !viewUsers" (click)="onCreateBlogClick()">Create Blog</button>
-<button *ngIf="!viewUsers" (click)="onUsersClick()">Users</button>
+<button *ngIf="account && !creatingBlog && !viewingBlog && !viewUsers && !viewingChats" (click)="onCreateBlogClick()">Create Blog</button>
+<button *ngIf="!viewUsers && !creatingBlog && !viewingBlog && !viewingChats" (click)="onUsersClick()">Users</button>
+<button *ngIf="account && !viewingChats && !viewUsers && !creatingBlog && !viewingBlog" (click)="onChatsClick()">Chats</button>
+<button *ngIf="account && viewingChats" (click)="onChatsClick()">Back</button>
+
+
 
 <!--<div>-->
 <!--  <app-blog-list></app-blog-list>-->
 <!--</div>-->
-<div *ngIf="!viewUsers">
-  <div *ngIf="!creatingBlog">
-    <div *ngIf="!viewingBlog">
-      <app-blog-list></app-blog-list>
+
+<div *ngIf="!viewingChats">
+  <div *ngIf="!viewUsers">
+    <div *ngIf="!creatingBlog">
+      <div *ngIf="!viewingBlog">
+        <app-blog-list></app-blog-list>
+      </div>
+      <div *ngIf="viewingBlog">
+        <app-blog></app-blog>
+      </div>
     </div>
-    <div *ngIf="viewingBlog">
-      <app-blog></app-blog>
+    <div *ngIf="creatingBlog && account">
+      <app-create-blog></app-create-blog>
     </div>
   </div>
-  <div *ngIf="creatingBlog && account">
-    <app-create-blog></app-create-blog>
+
+  <div *ngIf="viewUsers">
+    <app-accounts-list></app-accounts-list>
   </div>
 </div>
 
-<div *ngIf="viewUsers">
-  <app-accounts-list></app-accounts-list>
+<div *ngIf="viewingChats">
+  <app-chat-list></app-chat-list>
 </div>
 

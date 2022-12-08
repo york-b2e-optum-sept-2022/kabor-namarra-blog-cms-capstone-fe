@@ -1,2 +1,15 @@
-<h2>{{account.username}}</h2>
-<h3>{{account.firstname}} {{account.lastname}}</h3>
+<div>
+  <h2>{{account.username}}</h2>
+  <h3>{{account.firstname}} {{account.lastname}}</h3>
+  <button *ngIf="userAccount" (click)="onMessageClick()">Message</button>
+
+  <div *ngIf="!userAccount">
+    Login to Message:
+    <button disabled>Message</button>
+  </div>
+</div>
+
+<!--<div *ngIf="messaging">-->
+<!--  <app-chat></app-chat>-->
+<!--</div>-->
+

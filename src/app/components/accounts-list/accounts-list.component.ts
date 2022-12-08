@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IAccount} from "../../interfaces/IAccount";
 import {AccountService} from "../../account.service";
 import {Subject, takeUntil} from "rxjs";
+import {ChatService} from "../../chat.service";
 
 @Component({
   selector: 'app-accounts-list',
@@ -12,15 +13,19 @@ export class AccountsListComponent implements OnInit, OnDestroy{
 
   accountsList: IAccount[] = [];
   account: IAccount|null = null;
+  messaging: boolean = false;
 
   onDestroy = new Subject();
 
-  constructor(public accountService: AccountService) {
+  constructor(public accountService: AccountService, public chatService: ChatService) {
     this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.account = account;
     })
     this.accountService.$accountList.pipe(takeUntil(this.onDestroy)).subscribe(accounts =>{
       this.accountsList = accounts;
+    })
+    this.chatService.$viewingNewChat.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+      this.messaging = viewing;
     })
   }
   ngOnInit() {
@@ -33,7 +38,7 @@ export class AccountsListComponent implements OnInit, OnDestroy{
   }
 
   onBackClick(){
-    this.accountService.exitAccountList();
+    this.accountService.viewingUsers();
   }
 
 

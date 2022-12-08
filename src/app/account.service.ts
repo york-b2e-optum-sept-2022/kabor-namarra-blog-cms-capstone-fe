@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpService} from "./http.service";
 import {IAccount} from "./interfaces/IAccount";
 import {first, Subject} from "rxjs";
+import {ChatService} from "./chat.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class AccountService {
   //account variables
   private userAccount: IAccount| null = null;
   private accountList: IAccount[] = [];
+  private viewingAccountList: boolean = false;
 
   //root toggle subjects
   $loggingIn = new Subject<boolean>();
@@ -93,8 +95,13 @@ export class AccountService {
     this.$userAccount.next(this.userAccount);
   }
 
-  exitAccountList(){
-    this.$viewingAccountList.next(false);
+  viewingUsers(){
+    this.viewingAccountList = !this.viewingAccountList
+    this.sendViewingUsers()
+  }
+
+  sendViewingUsers(){
+    this.$viewingAccountList.next(this.viewingAccountList);
   }
 
 

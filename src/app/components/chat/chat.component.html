@@ -1,0 +1,28 @@
+<button *ngIf="!receiver" (click)="onBackClick()">Back</button>
+<button *ngIf="receiver" (click)="onLeaveNewChat()">Back</button>
+
+<div *ngIf="!newChat">
+  <div *ngFor="let messenger of chat.messenger">
+    <h2 *ngIf="messenger.id !== account?.id">{{messenger.username}}</h2>
+  </div>
+  <div>
+    Chat:
+    <textarea [(ngModel)]="messageText"></textarea>
+    <button (click)="onSendClick()">Send</button>
+  </div>
+
+  <div>
+    <app-message *ngFor="let message of chat.messages"
+                 [message]="message"
+    ></app-message>
+  </div>
+</div>
+
+<div *ngIf="newChat">
+  <h2>{{receiver.username}}</h2>
+  <div>
+    Chat:
+    <textarea [(ngModel)]="messageText"></textarea>
+    <button (click)="onCreateChat()">Send</button>
+  </div>
+</div>

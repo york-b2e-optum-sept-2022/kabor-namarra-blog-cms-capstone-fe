@@ -27,11 +27,12 @@ export class BlogComponent implements OnInit, OnDestroy{
 
   constructor(public blogService: BlogService, public accountService: AccountService) {
     this.blogService.$blogViewed.pipe(takeUntil(this.onDestroy)).subscribe( blog =>{
-       blog.comments.sort((comment1:IComment, comment2:IComment) => {
-        const c = new Date(comment1.createdDate);
-        const d = new Date(comment2.createdDate);
-        return d.getTime() - c.getTime();
-      });
+      //  blog.comments.sort((comment1:IComment, comment2:IComment) => {
+      //   const c = new Date(comment1.createdDate);
+      //   const d = new Date(comment2.createdDate);
+      //   return d.getTime() - c.getTime();
+      // });
+      // console.log(blog.comments)
       this.blog = blog;
       if(blog.viewerID) {
         this.blogViews = blog.viewerID.length

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {IAccount} from "./interfaces/IAccount";
 import {IBlog} from "./interfaces/IBlog";
 import {IComment} from "./interfaces/IComment";
+import {IChat} from "./interfaces/IChat";
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,17 @@ export class HttpService {
 
   deleteComment(commentID: number){
     return this.http.delete(`http://localhost:8080/api/comment?id=${commentID}`)
+  }
+
+  getAccountsChats(accountID: number){
+    return this.http.get(`http://localhost:8080/api/chat/accounts?id=${accountID}`)as Observable<IChat[]>
+  }
+
+  updateChat(chatID: number, messageText: string, messengerID: number){
+    return this.http.put("http://localhost:8080/api/chat", {chatID:chatID, messageText: messageText, messengerID: messengerID})as Observable<IChat>
+  }
+
+  createChat(receiverID: number, messageText: string, messengerID: number){
+    return this.http.post("http://localhost:8080/api/chat", {messengerID: messengerID, receiverID: receiverID, messageText: messageText})as Observable<IChat>
   }
 }

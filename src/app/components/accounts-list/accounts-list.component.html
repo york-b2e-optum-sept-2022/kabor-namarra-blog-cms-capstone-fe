@@ -1,5 +1,14 @@
-<button (click)="onBackClick()">Back</button>
+<div *ngIf="!messaging">
+  <button (click)="onBackClick()">Back</button>
+  <div *ngFor="let accountDisplay of accountsList">
+    <div *ngIf="account?.id !== accountDisplay.id">
+      <app-account-display
+        [account]="accountDisplay"
+      ></app-account-display>
+    </div>
+  </div>
+</div>
 
-<app-account-display *ngFor="let account of accountsList"
-                     [account]="account"
-></app-account-display>
+<div *ngIf="messaging">
+  <app-chat></app-chat>
+</div>

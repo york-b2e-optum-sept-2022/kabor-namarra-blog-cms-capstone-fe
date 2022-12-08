@@ -1,0 +1,10 @@
+<div *ngIf="!viewingChat">
+  <app-chat-display *ngFor="let chat of chatList"
+                    [chat]="chat"
+                    [account]="account"
+  ></app-chat-display>
+</div>
+
+<div *ngIf="viewingChat">
+  <app-chat></app-chat>
+</div>

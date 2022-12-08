@@ -14,6 +14,10 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CreateBlogComponent } from './components/create-blog/create-blog.component';
 import { AccountsListComponent } from './components/accounts-list/accounts-list.component';
 import { AccountDisplayComponent } from './components/account-display/account-display.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { MessageComponent } from './components/message/message.component';
+import { ChatDisplayComponent } from './components/chat-display/chat-display.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { AccountDisplayComponent } from './components/account-display/account-di
     CommentComponent,
     CreateBlogComponent,
     AccountsListComponent,
-    AccountDisplayComponent
+    AccountDisplayComponent,
+    ChatListComponent,
+    ChatComponent,
+    MessageComponent,
+    ChatDisplayComponent
   ],
   imports: [
     BrowserModule,

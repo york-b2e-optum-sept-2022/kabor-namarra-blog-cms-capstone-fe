@@ -27,6 +27,18 @@ export class BlogService {
   getBlogs(){
     this.http.getBlogs().pipe(first()).subscribe({
       next: (blogs) => {
+        blogs.sort((blog1:IBlog, blog2:IBlog) => {
+          const c = new Date(blog1.createdDate);
+          const d = new Date(blog2.createdDate);
+          return d.getTime() - c.getTime();
+        });
+        for(let blog of blogs){
+          blog.comments.sort((comment1:IComment, comment2:IComment) => {
+            const c = new Date(comment1.createdDate);
+            const d = new Date(comment2.createdDate);
+            return d.getTime() - c.getTime();
+          });
+        }
         this.blogList = blogs;
         this.$blogList.next(this.blogList);
       },
