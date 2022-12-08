@@ -14,6 +14,7 @@ export class HomepageComponent implements OnInit, OnDestroy{
   account: IAccount|null = null;
   viewingBlog: boolean = false;
   creatingBlog: boolean = false;
+  viewUsers: boolean = false;
 
   onDestroy = new Subject();
 
@@ -31,6 +32,9 @@ export class HomepageComponent implements OnInit, OnDestroy{
     })
     this.blogService.$creatingBlog.pipe(takeUntil(this.onDestroy)).subscribe(creating =>{
       this.creatingBlog = creating;
+    })
+    this.accountService.$viewingAccountList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+      this.viewUsers = viewing;
     })
   }
   ngOnInit() {
@@ -57,6 +61,10 @@ export class HomepageComponent implements OnInit, OnDestroy{
 
   onCreateBlogClick(){
     this.creatingBlog = !this.creatingBlog
+  }
+
+  onUsersClick(){
+    this.viewUsers = !this.viewUsers
   }
 
 }

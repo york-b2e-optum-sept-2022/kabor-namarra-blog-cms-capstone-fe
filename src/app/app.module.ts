@@ -12,6 +12,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { BlogDisplayComponent } from './components/blog-display/blog-display.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateBlogComponent } from './components/create-blog/create-blog.component';
+import { AccountsListComponent } from './components/accounts-list/accounts-list.component';
+import { AccountDisplayComponent } from './components/account-display/account-display.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CreateBlogComponent } from './components/create-blog/create-blog.compon
     BlogComponent,
     BlogDisplayComponent,
     CommentComponent,
-    CreateBlogComponent
+    CreateBlogComponent,
+    AccountsListComponent,
+    AccountDisplayComponent
   ],
   imports: [
     BrowserModule,

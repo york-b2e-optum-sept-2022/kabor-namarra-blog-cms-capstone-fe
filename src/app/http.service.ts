@@ -25,6 +25,10 @@ export class HttpService {
     })as Observable<IAccount>
   }
 
+  getAllAccounts(){
+    return this.http.get("http://localhost:8080/api/account/all")as Observable<IAccount[]>
+  }
+
   getBlogs(){
     return this.http.get("http://localhost:8080/api/blog/all")as Observable<IBlog[]>
   }

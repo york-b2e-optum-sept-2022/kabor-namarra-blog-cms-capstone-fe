@@ -14,6 +14,7 @@ export class AccountService {
 
   //account variables
   private userAccount: IAccount| null = null;
+  private accountList: IAccount[] = [];
 
   //root toggle subjects
   $loggingIn = new Subject<boolean>();
@@ -22,6 +23,8 @@ export class AccountService {
 
   //account subject variables
   $userAccount = new Subject<IAccount|null>();
+  $accountList = new Subject<IAccount[]>();
+  $viewingAccountList = new Subject<boolean>();
 
   constructor(public http: HttpService) { }
 
@@ -74,8 +77,24 @@ export class AccountService {
     })
   }
 
+  getAllAccounts(){
+    this.http.getAllAccounts().pipe(first()).subscribe({
+      next: (accounts) => {
+        this.accountList = accounts
+        this.$accountList.next(this.accountList)
+      },
+      error: (err) => {
+        console.error(err)
+      }
+    })
+  }
+
   sendAccount(){
     this.$userAccount.next(this.userAccount);
+  }
+
+  exitAccountList(){
+    this.$viewingAccountList.next(false);
   }
 
 

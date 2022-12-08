@@ -1,0 +1,5 @@
+<button (click)="onBackClick()">Back</button>
+
+<app-account-display *ngFor="let account of accountsList"
+                     [account]="account"
+></app-account-display>
