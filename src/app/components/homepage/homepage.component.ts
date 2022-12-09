@@ -39,6 +39,9 @@ export class HomepageComponent implements OnInit, OnDestroy{
     this.accountService.$viewingAccountList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.viewUsers = viewing;
     })
+    this.chatService.$viewingChatList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+      this.viewingChats = viewing;
+    })
   }
   ngOnInit() {
     this.accountService.sendViewingUsers()
@@ -72,7 +75,7 @@ export class HomepageComponent implements OnInit, OnDestroy{
   }
 
   onChatsClick(){
-    this.viewingChats = !this.viewingChats
+    this.chatService.onViewingChatList();
   }
 
 }

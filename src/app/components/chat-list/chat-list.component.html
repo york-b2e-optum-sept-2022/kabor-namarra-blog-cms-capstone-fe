@@ -1,4 +1,5 @@
 <div *ngIf="!viewingChat">
+  <button (click)="onBackClick()">Back</button>
   <app-chat-display *ngFor="let chat of chatList"
                     [chat]="chat"
                     [account]="account"

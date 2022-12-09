@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit,OnDestroy{
   chat!: IChat;
   messageText: string = "";
   account: IAccount|null = null;
-  receiver!: IAccount;
+  receiver: IAccount|null = null;
   newChat: boolean = false;
 
   onDestroy = new Subject();
@@ -23,15 +23,23 @@ export class ChatComponent implements OnInit,OnDestroy{
   constructor(public chatService: ChatService,public accountService: AccountService) {
     this.chatService.$chatViewing.pipe(takeUntil(this.onDestroy)).subscribe(chat =>{
       this.chat = chat;
+      console.log("got 1")
+      console.log(this.chat)
     })
     this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.account = account;
+      console.log("got 2")
+      console.log(this.account)
     })
-    this.chatService.$startMessaging.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
+    this.chatService.$accountReceiving.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.receiver = account;
+      console.log("got 3")
+      console.log(this.receiver)
     })
     this.chatService.$viewingNewChat.pipe().pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.newChat = viewing;
+      console.log("got 4")
+      console.log(this.newChat)
     })
   }
 
@@ -60,12 +68,21 @@ export class ChatComponent implements OnInit,OnDestroy{
       this.messageText = "";
     }
   }
+  onCheckSendClick(){
+    if(this.messageText === ""){
+      return;
+    }
+    if(this.chat.id && this.account?.id) {
+      this.chatService.updateChat(this.chat.id, this.messageText, this.account?.id)
+      this.messageText = "";
+    }
+  }
 
   onCreateChat(){
     if(this.messageText === ""){
       return;
     }
-    if(this.account?.id && this.receiver.id) {
+    if(this.account?.id && this.receiver?.id) {
       this.chatService.createChat(this.receiver.id, this.messageText, this.account?.id)
       this.messageText = "";
       this.newChat = false;
@@ -73,7 +90,7 @@ export class ChatComponent implements OnInit,OnDestroy{
   }
 
   onLeaveNewChat(){
-    this.chatService.onViewingNewChat()
+    this.chatService.onViewingChatFromList()
   }
 
 }

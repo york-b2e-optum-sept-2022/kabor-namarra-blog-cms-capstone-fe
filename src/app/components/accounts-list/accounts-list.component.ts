@@ -24,7 +24,7 @@ export class AccountsListComponent implements OnInit, OnDestroy{
     this.accountService.$accountList.pipe(takeUntil(this.onDestroy)).subscribe(accounts =>{
       this.accountsList = accounts;
     })
-    this.chatService.$viewingNewChat.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+    this.chatService.$viewingChatFromList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.messaging = viewing;
     })
   }

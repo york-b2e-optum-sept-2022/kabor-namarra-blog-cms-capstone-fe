@@ -1,7 +1,12 @@
 
 <div *ngIf="comment.author.id === account?.id && !editingComment">
   <button (click)="onEditClick()">Edit</button>
-  <button (click)="onDeleteClick()">Delete</button>
+  <button *ngIf="!deleteCheck" (click)="onDeleteCheck()">Delete</button>
+  <div *ngIf="deleteCheck">
+    Are you sure?
+    <button (click)="onDeleteCheck()">No</button>
+    <button (click)="onDeleteClick()">Yes</button>
+  </div>
   <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
   <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
   <p *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</p>

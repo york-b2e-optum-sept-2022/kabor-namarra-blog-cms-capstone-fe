@@ -40,7 +40,7 @@ export class AccountDisplayComponent implements OnInit, OnDestroy{
     if(this.account) {
       this.chatService.messageClick(this.account)
     }
-    this.chatService.onViewingNewChat();
+    // this.chatService.onViewingNewChat();
   }
 
 

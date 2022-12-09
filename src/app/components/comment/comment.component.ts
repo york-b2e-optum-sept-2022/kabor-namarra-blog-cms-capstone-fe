@@ -13,6 +13,7 @@ export class CommentComponent {
   @Input() comment!: IComment;
   @Input() account: IAccount|null = null;
   editingComment: boolean = false;
+  deleteCheck: boolean = false;
 
   constructor(public blogService: BlogService) {
   }
@@ -25,6 +26,10 @@ export class CommentComponent {
     this.comment.updatedDate = new Date()
     this.blogService.updateComment(this.comment)
     this.onEditClick();
+  }
+
+  onDeleteCheck(){
+    this.deleteCheck = !this.deleteCheck
   }
 
   onDeleteClick(){

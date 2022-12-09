@@ -62,6 +62,11 @@ export class BlogService {
   updateBlog(blog: IBlog){
     this.http.updateBlog(blog).pipe(first()).subscribe({
       next: (blog) => {
+        blog.comments.sort((comment1:IComment, comment2:IComment) => {
+          const c = new Date(comment1.createdDate);
+          const d = new Date(comment2.createdDate);
+          return d.getTime() - c.getTime();
+        });
         this.blogViewed = blog
         this.getBlogViewed()
         this.getBlogs()
@@ -86,7 +91,7 @@ export class BlogService {
     this.http.createComment(body, authorID, blogID).pipe(first()).subscribe({
       next: (comment) => {
         console.log(comment)
-        this.blogViewed.comments.push(comment);
+        this.blogViewed.comments.splice(0,0,comment);
         this.getBlogViewed()
       },
       error: (err) => {

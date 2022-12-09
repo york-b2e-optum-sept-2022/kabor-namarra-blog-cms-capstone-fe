@@ -42,4 +42,8 @@ export class ChatListComponent implements OnInit, OnDestroy{
     this.onDestroy.complete();
   }
 
+  onBackClick(){
+    this.chatService.onViewingChatList();
+  }
+
 }

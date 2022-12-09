@@ -4,7 +4,6 @@
 <button *ngIf="account && !creatingBlog && !viewingBlog && !viewUsers && !viewingChats" (click)="onCreateBlogClick()">Create Blog</button>
 <button *ngIf="!viewUsers && !creatingBlog && !viewingBlog && !viewingChats" (click)="onUsersClick()">Users</button>
 <button *ngIf="account && !viewingChats && !viewUsers && !creatingBlog && !viewingBlog" (click)="onChatsClick()">Chats</button>
-<button *ngIf="account && viewingChats" (click)="onChatsClick()">Back</button>
 
 
 

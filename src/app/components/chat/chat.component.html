@@ -1,7 +1,7 @@
-<button *ngIf="!receiver" (click)="onBackClick()">Back</button>
-<button *ngIf="receiver" (click)="onLeaveNewChat()">Back</button>
+<button *ngIf="!receiver" (click)="onBackClick()">CBack</button>
+<button *ngIf="receiver" (click)="onLeaveNewChat()">EBack</button>
 
-<div *ngIf="!newChat">
+<div *ngIf="!newChat && chat">
   <div *ngFor="let messenger of chat.messenger">
     <h2 *ngIf="messenger.id !== account?.id">{{messenger.username}}</h2>
   </div>
@@ -18,8 +18,8 @@
   </div>
 </div>
 
-<div *ngIf="newChat">
-  <h2>{{receiver.username}}</h2>
+<div *ngIf="newChat ">
+  <h2>{{receiver?.username}}</h2>
   <div>
     Chat:
     <textarea [(ngModel)]="messageText"></textarea>
