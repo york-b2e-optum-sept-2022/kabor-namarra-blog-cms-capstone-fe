@@ -1,0 +1,33 @@
+.blogSearch{
+  /*position: fixed;*/
+  width: 90%;
+  /*left: 25%;*/
+  margin-right: auto;
+  margin-left: auto;
+  background: dimgrey;
+  border-radius: 15px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  min-height: 10%;
+  padding: 1%;
+
+}
+
+.blogSearchComp{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 3%;
+  padding-left: 3%;
+}
+
+#searchBar{
+  display: flex;
+  align-items: center;
+  /*top: 50%;*/
+}
+
+#searchBox{
+  border-radius: 5px;
+  border: dimgrey;
+  font-size: 120%;
+}

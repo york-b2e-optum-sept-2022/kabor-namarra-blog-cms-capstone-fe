@@ -1,3 +1,14 @@
+<div class="blogSearch">
+  <div class="blogSearchComp">
+    <div id="searchBar">
+      <input id="searchBox" placeholder="search">
+    </div>
+    <div>
+      <button *ngIf="!account" mat-raised-button color="primary" disabled>Create Blog</button>
+      <button *ngIf="account" mat-raised-button color="primary" >Create Blog</button>
+    </div>
+  </div>
+</div>
 <app-blog-display *ngFor="let blog of blogList"
      [blogDisplay] = blog
 ></app-blog-display>

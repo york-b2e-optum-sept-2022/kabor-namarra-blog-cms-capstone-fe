@@ -1,14 +1,26 @@
-<div class="blogDisplay" (click)="onBlogDisplayClick()">
-  <h2>{{blogDisplay.title}}</h2>
-  <p>{{blogDisplay.author.firstname}} {{blogDisplay.author.lastname}}</p>
-</div>
+<!--<div class="blogDisplay" (click)="onBlogDisplayClick()">-->
+<!--  <h2>{{blogDisplay.title}}</h2>-->
+<!--  <p>{{blogDisplay.author.firstname}} {{blogDisplay.author.lastname}}</p>-->
+<!--</div>-->
 
 <div class="blogNew">
   <div class="blogTop">
     <div id="blogUserInfo">
-      <h1>{{blogDisplay.author.username}}</h1>
-      <div id="blogCreated">{{blogDisplay.createdDate | date}}</div>
+      <h2 class="blogCreated">{{blogDisplay.author.username}}</h2>
+      <div class="blogCreated">{{blogDisplay.createdDate | date}}</div>
+    </div>
+    <div id="blogInteractions">
+      <div class="blogCreated"> <mat-icon id="blogIcon">remove_red_eye</mat-icon>{{blogDisplay.viewerID.length}}</div>
     </div>
   </div>
-  Hello
+
+  <div class="blogContent" (click)="onBlogDisplayClick()">
+    <div class="blogText">
+      <h1>{{blogDisplay.title}}</h1>
+      <p>{{blogDisplay.body}}</p>
+    </div>
+    <div class="blogImages">
+
+    </div>
+  </div>
 </div>

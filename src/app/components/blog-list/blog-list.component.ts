@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BlogService} from "../../blog.service";
 import {IBlog} from "../../interfaces/IBlog";
 import {Subject, takeUntil} from "rxjs";
+import {AccountService} from "../../account.service";
+import {IAccount} from "../../interfaces/IAccount";
 
 @Component({
   selector: 'app-blog-list',
@@ -11,12 +13,16 @@ import {Subject, takeUntil} from "rxjs";
 export class BlogListComponent implements OnInit, OnDestroy{
 
   blogList: IBlog[] = [];
+  account: IAccount| null = null;
 
   onDestroy = new Subject();
 
-  constructor(public blogService: BlogService) {
+  constructor(public blogService: BlogService, public accountService: AccountService) {
     this.blogService.$blogList.pipe(takeUntil(this.onDestroy)).subscribe( blogList => {
       this.blogList = blogList;
+    })
+    this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
+      this.account = account;
     })
   }
 
@@ -26,6 +32,7 @@ export class BlogListComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit() {
+    this.accountService.sendAccount();
     this.blogService.getBlogs()
   }
 
