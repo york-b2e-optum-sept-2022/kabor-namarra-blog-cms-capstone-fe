@@ -1,57 +1,120 @@
-<button (click)="onBackClick()">Back</button>
+<button mat-raised-button color="primary" (click)="onBackClick()">Back</button>
+<div class="wholeBlog">
 
-<div *ngIf="!editing">
-  <div *ngIf="account?.id === blog.author.id">
-    <div *ngIf="!deleteCheck">
-      <button  (click)="onEditClick()">Edit</button>
-      <button  (click)="onDeleteCheck()">Delete</button>
+  <div *ngIf="!editing">
+
+
+    <div *ngIf="account?.id === blog.author.id">
+      <div *ngIf="!deleteCheck">
+        <button class="editButtons" mat-raised-button (click)="onEditClick()">Edit</button>
+        <button class="editButtons" mat-raised-button color="warn" (click)="onDeleteCheck()">Delete</button>
+      </div>
+      <div *ngIf="deleteCheck">
+        Are you sure?
+        <button class="editButtons" mat-raised-button (click)="onDeleteCheck()">No</button>
+        <button class="editButtons" mat-raised-button color="warn" (click)="onDeleteClick()">Yes</button>
+      </div>
     </div>
-    <div *ngIf="deleteCheck">
-      Are you sure?
-      <button  (click)="onDeleteCheck()">No</button>
-      <button  (click)="onDeleteClick()">Yes</button>
+
+    <div class="blogSection">
+
+      <div class="blogImages">
+        <div>
+
+        </div>
+      </div>
+      <div class="blogHeader">
+        <div class="headerContent">
+          <h1>
+            {{blog.title}}
+          </h1>
+          <div>
+            {{blog.createdDate | date}}
+          </div>
+          <div *ngIf="blog.updatedDate">
+            updated: {{blog.updatedDate | date}}
+          </div>
+        </div>
+      </div>
+
+      <div class="blogTop">
+        <div id="blogUserInfo">
+          <h2 class="blogCreated">@{{blog.author.username}}</h2>
+        </div>
+        <div id="blogInteractions">
+          <div class="blogCreated"> <mat-icon id="blogIcon">remove_red_eye</mat-icon>{{blog.viewerID.length}}</div>
+        </div>
+      </div>
+
+
+<!--      <div>{{blogViews}}</div>-->
+<!--      <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>-->
+
+      <div class="blogBody">
+        <p>{{blog.body}}</p>
+      </div>
     </div>
-  </div>
 
-  <div class="blogSection">
-    <h1>
-      {{blog.title}}
-    </h1>
-    <div>{{blogViews}}</div>
-    <div>{{blog.createdDate | date}}</div>
-    <div *ngIf="blog.updatedDate"> updated: {{blog.updatedDate | date}}</div>
-    <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
-    <p>{{blog.body}}</p>
+    <div class="commentSection">
+      <div class="makeComment">
+        <h3 *ngIf="!account" id="noLogged">
+          Log in to Leave comment
+        </h3>
+        <div *ngIf="account" id="yesLogged">
+          <h3 class="commentPart">Leave Comment:</h3>
+          <textarea class="commentPart" id="commentField" [(ngModel)]="commentInput" placeholder="comment"></textarea>
+          <button class="commentPart" mat-raised-button color="primary" (click)="onCommentClick()">Comment</button>
+        </div>
+        <h3>
+          {{errorDisplay}}
+        </h3>
+      </div>
 
-  </div>
-
-
-  <div *ngIf="account">
-    Leave comment:
-    <textarea [(ngModel)]="commentInput" placeholder="comment"></textarea>
-    <button (click)="onCommentClick()">Comment</button>
-    {{errorDisplay}}
-  </div>
-  <div *ngIf="!account">
-    Log in to Leave comment
-  </div>
-
-  <app-comment *ngFor="let comment of blog.comments"
-               [comment] = comment
-               [account] = account
-  ></app-comment>
-</div>
-
-<div *ngIf="editing && account">
-  <div class="blogSection">
-    <button (click)="onEditClick()">Cancel</button>
-    <button (click)="onSaveClick()">Save</button>
-    <h1>
-      <input [(ngModel)]="blog.title">
-    </h1>
-    <div>{{blog.createdDate | date}}</div>
-    <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>
-    <textarea [(ngModel)]="blog.body"></textarea>
+      <div class="commentList">
+        <app-comment *ngFor="let comment of blog.comments"
+                     [comment] = comment
+                     [account] = account
+        ></app-comment>
+      </div>
+    </div>
 
   </div>
+
+  <div *ngIf="editing && account">
+<!--    <div class="blogSection">-->
+<!--      <button (click)="onEditClick()">Cancel</button>-->
+<!--      <button (click)="onSaveClick()">Save</button>-->
+<!--      <h1>-->
+<!--        <input [(ngModel)]="blog.title">-->
+<!--      </h1>-->
+<!--      <div>{{blog.createdDate | date}}</div>-->
+<!--      <h4>{{blog.author.firstname}} {{blog.author.lastname}}</h4>-->
+<!--      <textarea [(ngModel)]="blog.body"></textarea>-->
+
+<!--    </div>-->
+
+    <div class="blogSection">
+
+      <button class="editButtons" mat-raised-button (click)="onEditClick()">Cancel</button>
+      <button class="editButtons" mat-raised-button color="primary" (click)="onSaveClick()">Save</button>
+      <div class="blogImages">
+        <div>
+
+        </div>
+      </div>
+      <div class="blogHeader">
+        <div class="headerContent">
+          <h1>
+            <input id="titleField" [(ngModel)]="blog.title">
+          </h1>
+        </div>
+      </div>
+      <div class="blogBody">
+        <textarea id="bodyField" [(ngModel)]="blog.body"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+
 </div>

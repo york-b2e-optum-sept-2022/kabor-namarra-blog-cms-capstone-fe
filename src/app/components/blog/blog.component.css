@@ -1,3 +1,112 @@
 .blogSection{
-  background-color: rosybrown;
+  /*background-color: rosybrown;*/
+  padding-bottom: 100px;
+}
+.wholeBlog{
+  /*text-align: center;*/
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}
+.blogHeader{
+  display: flex;
+  justify-content: center;
+}
+.headerContent{
+  display: grid;
+  text-align: center;
+}
+
+.blogTop{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  /*min-height: 50px;*/
+  /*max-height: 70px;*/
+}
+
+#blogUserInfo{
+  display: flex;
+}
+
+.blogCreated{
+  display: flex;
+  align-items: center;
+  /*padding-left: 10px;*/
+}
+
+#blogInteractions{
+  display: flex;
+  justify-content: start;
+}
+
+.blogBody{
+  background: white;
+  border-radius: 15px;
+  min-height: 200px;
+  padding: 15px 8%;
+}
+
+#blogIcon{
+  padding-right: 10px;
+}
+
+#titleField{
+  font-size: 120%;
+}
+
+#bodyField{
+  width: 100%;
+  height: 170px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.editButtons{
+  margin: 5px;
+}
+
+.makeComment{
+  text-align: center;
+}
+
+#yesLogged{
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+#commentField{
+  width: 20%;
+  height: 80px;
+  max-height: 100px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.commentPart{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#noLogged{
+  background: #7F8FB9;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.commentList{
+  background: #BABABA;
+  margin-bottom: 100px;
+  padding: 15px;
+  /*border-radius: 15px;*/
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
 }
