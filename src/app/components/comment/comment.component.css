@@ -1,0 +1,30 @@
+.wholeComment{
+  border-bottom: dimgrey solid 1px;
+  border-top: dimgrey solid 1px;
+  padding: 5px;
+}
+.commentHeader{
+  display: flex;
+  align-items: center;
+}
+
+.commentHeaderText{
+  margin-right: 15px;
+}
+
+/*.commentBody{*/
+/*  max-width: fit-content;*/
+/*  height: fit-content;*/
+/*}*/
+
+#commentField{
+  width: 75%;
+  max-width: 75%;
+  min-width: 75%;
+  height: 60px;
+  max-height: 60px;
+  min-height: 60px;
+  border-radius: 10px;
+  padding: 5px;
+}
+

@@ -1,32 +1,44 @@
-
-<div *ngIf="comment.author.id === account?.id && !editingComment">
-  <button (click)="onEditClick()">Edit</button>
-  <button *ngIf="!deleteCheck" (click)="onDeleteCheck()">Delete</button>
-  <div *ngIf="deleteCheck">
-    Are you sure?
-    <button (click)="onDeleteCheck()">No</button>
-    <button (click)="onDeleteClick()">Yes</button>
+<div class="wholeComment">
+  <div *ngIf="comment.author.id === account?.id && !editingComment">
+    <button mat-raised-button (click)="onEditClick()">Edit</button>
+    <button mat-raised-button color="warn"*ngIf="!deleteCheck" (click)="onDeleteCheck()">Delete</button>
+    <div *ngIf="deleteCheck">
+      Are you sure?
+      <button mat-raised-button (click)="onDeleteCheck()">No</button>
+      <button mat-raised-button color="warn" (click)="onDeleteClick()">Yes</button>
+    </div>
+    <div class="commentHeader">
+      <h3 class="commentHeaderText">@{{comment.author.username}}</h3>
+      <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
+      <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
+    </div>
+    <div class="commentBody">
+      <p>{{comment.body}}</p>
+    </div>
   </div>
-  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
-  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
-  <p *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</p>
-  <p>{{comment.body}}</p>
-</div>
 
 
-<div *ngIf="comment.author.id !== account?.id && !editingComment">
-  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
-  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
-  <p *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</p>
-  <p>{{comment.body}}</p>
-</div>
+  <div *ngIf="comment.author.id !== account?.id && !editingComment">
+    <div class="commentHeader">
+      <h3 class="commentHeaderText">@{{comment.author.username}}</h3>
+      <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
+      <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
+    </div>
+    <div class="commentBody">
+      <p>{{comment.body}}</p>
+    </div>
+  </div>
 
 
-<div *ngIf="comment.author.id === account?.id && editingComment">
-  <button (click)="onEditClick()">Cancel</button>
-  <button (click)="onSaveClick()">Save</button>
-  <h3>{{comment.author.firstname}} {{comment.author.lastname}}</h3>
-  <p *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</p>
-  <textarea [(ngModel)]="comment.body"></textarea>
+  <div *ngIf="comment.author.id === account?.id && editingComment">
+    <button mat-raised-button (click)="onEditClick()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSaveClick()">Save</button>
+    <div class="commentHeader">
+      <h3 class="commentHeaderText">@{{comment.author.username}}</h3>
+      <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
+      <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
+    </div>
+    <textarea id="commentField" [(ngModel)]="comment.body"></textarea>
+  </div>
 </div>
 
