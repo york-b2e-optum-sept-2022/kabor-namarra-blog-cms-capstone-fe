@@ -12,10 +12,13 @@
   margin-right: 15px;
 }
 
-/*.commentBody{*/
-/*  max-width: fit-content;*/
-/*  height: fit-content;*/
-/*}*/
+.commentBody{
+  /*width: 100px;*/
+  /*height: 400px;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 #commentField{
   width: 75%;

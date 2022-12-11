@@ -1,0 +1,28 @@
+.messageHeader{
+  display: flex;
+  align-items: center;
+}
+
+.messengerMessage{
+  display: grid;
+  background: lightsteelblue;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 5px 0 5px auto;
+  width: fit-content;
+}
+
+.receiverMessage{
+  display: grid;
+  background: #BABABA;
+  padding: 15px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.messageUsername{
+  margin-left: 5px;
+}
+.receiverUsername{
+  margin-right: 5px;
+}

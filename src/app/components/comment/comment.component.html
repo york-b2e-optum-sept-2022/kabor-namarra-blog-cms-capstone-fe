@@ -1,7 +1,7 @@
 <div class="wholeComment">
   <div *ngIf="comment.author.id === account?.id && !editingComment">
     <button mat-raised-button (click)="onEditClick()">Edit</button>
-    <button mat-raised-button color="warn"*ngIf="!deleteCheck" (click)="onDeleteCheck()">Delete</button>
+    <button mat-raised-button color="warn" *ngIf="!deleteCheck" (click)="onDeleteCheck()">Delete</button>
     <div *ngIf="deleteCheck">
       Are you sure?
       <button mat-raised-button (click)="onDeleteCheck()">No</button>

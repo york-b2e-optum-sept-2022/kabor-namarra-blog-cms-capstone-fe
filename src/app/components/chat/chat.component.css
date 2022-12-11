@@ -1,0 +1,21 @@
+.wholeChat{
+  display: grid;
+}
+
+.messageArea{
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+textarea{
+  margin-left: 15px;
+  max-width: 300px;
+  min-width: 300px;
+  max-height: 50px;
+  min-height: 50px;
+}
+
+button{
+  margin: 15px;
+}

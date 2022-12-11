@@ -1,11 +1,21 @@
-<div *ngIf="!viewingChat">
-  <button (click)="onBackClick()">Back</button>
-  <app-chat-display *ngFor="let chat of chatList"
-                    [chat]="chat"
-                    [account]="account"
-  ></app-chat-display>
+<div class="chatPage">
+  <div class="chatList">
+
+    <div *ngIf="!viewingChat">
+      <button mat-raised-button (click)="onBackClick()">Back</button>
+      <div class="chatDisplay">
+        <app-chat-display *ngFor="let chat of chatList"
+                          [chat]="chat"
+                          [account]="account"
+        ></app-chat-display>
+      </div>
+    </div>
+
+    <div>
+      <div class="chatDisplay" *ngIf="viewingChat">
+        <app-chat></app-chat>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div *ngIf="viewingChat">
-  <app-chat></app-chat>
-</div>

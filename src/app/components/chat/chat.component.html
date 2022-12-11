@@ -1,28 +1,29 @@
-<button *ngIf="!receiver" (click)="onBackClick()">CBack</button>
-<button *ngIf="receiver" (click)="onLeaveNewChat()">EBack</button>
+<button mat-raised-button color="primary" *ngIf="!receiver" (click)="onBackClick()">CBack</button>
+<button mat-raised-button color="primary" *ngIf="receiver" (click)="onLeaveNewChat()">EBack</button>
 
-<div *ngIf="!newChat && chat">
+<div *ngIf="!newChat && chat" class="wholeChat">
   <div *ngFor="let messenger of chat.messenger">
-    <h2 *ngIf="messenger.id !== account?.id">{{messenger.username}}</h2>
+    <h2 *ngIf="messenger.id !== account?.id">@{{messenger.username}}</h2>
   </div>
-  <div>
+  <div class="messageArea">
     Chat:
-    <textarea [(ngModel)]="messageText"></textarea>
-    <button (click)="onSendClick()">Send</button>
+    <textarea class="textArea" [(ngModel)]="messageText"></textarea>
+    <button mat-raised-button color="primary" (click)="onSendClick()">Send</button>
   </div>
 
   <div>
     <app-message *ngFor="let message of chat.messages"
                  [message]="message"
+                 [account]="account"
     ></app-message>
   </div>
 </div>
 
 <div *ngIf="newChat ">
-  <h2>{{receiver?.username}}</h2>
-  <div>
+  <h2>@{{receiver?.username}}</h2>
+  <div class="messageArea">
     Chat:
-    <textarea [(ngModel)]="messageText"></textarea>
-    <button (click)="onCreateChat()">Send</button>
+    <textarea class="textArea" [(ngModel)]="messageText"></textarea>
+    <button mat-raised-button color="primary" (click)="onCreateChat()">Send</button>
   </div>
 </div>

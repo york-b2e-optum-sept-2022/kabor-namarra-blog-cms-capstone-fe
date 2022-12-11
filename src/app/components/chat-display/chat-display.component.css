@@ -4,3 +4,26 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.chatDisplayComp{
+
+  display: flex;
+  justify-content: space-between;
+  border-top: dimgrey solid 1px;
+  border-bottom: dimgrey solid 1px;
+}
+
+#messageDisplay{
+  margin-left: 15px;
+  display: grid;
+}
+
+#messageDate{
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+.chatDisplayComp:hover{
+  background: #D9D9D9;
+  cursor: pointer;
+}

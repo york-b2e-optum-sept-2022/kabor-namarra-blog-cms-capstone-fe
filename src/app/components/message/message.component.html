@@ -1,3 +1,16 @@
-<h3>{{message.messenger.username}}</h3>
-<p>{{message.createdDate | date}}</p>
-<p>{{message.messageText}}</p>
+
+<div *ngIf="account?.id === message.messenger.id" class="messengerMessage">
+  <div class="messageHeader">
+    <p>{{message.createdDate | date}}</p>
+    <h3 class="messageUsername">{{message.messenger.username}}</h3>
+  </div>
+  <p>{{message.messageText}}</p>
+</div>
+
+<div *ngIf="account?.id !== message.messenger.id" class="receiverMessage">
+  <div class="messageHeader">
+    <h3 class="receiverUsername">{{message.messenger.username}}</h3>
+    <p>{{message.createdDate | date}}</p>
+  </div>
+  <p>{{message.messageText}}</p>
+</div>

@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {IMessage} from "../../interfaces/IMessage";
+import {IAccount} from "../../interfaces/IAccount";
 
 @Component({
   selector: 'app-message',
@@ -9,5 +10,6 @@ import {IMessage} from "../../interfaces/IMessage";
 export class MessageComponent {
 
   @Input() message!: IMessage;
+  @Input() account: IAccount | null = null;
 
 }

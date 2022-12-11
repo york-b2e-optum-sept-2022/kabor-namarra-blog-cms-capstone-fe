@@ -44,13 +44,13 @@ export class ChatService {
             chat.messages.sort((message1: IMessage, message2: IMessage) => {
               const c = new Date(message1.createdDate);
               const d = new Date(message2.createdDate);
-              return c.getTime() - d.getTime();
+              return d.getTime() - c.getTime();
             });
           }
           chats.sort((chat1: IChat, chat2: IChat) => {
             const c = new Date(chat1.messages[chat1.messages.length - 1].createdDate);
             const d = new Date(chat2.messages[chat2.messages.length - 1].createdDate);
-            return d.getTime() - c.getTime();
+            return  c.getTime() -d.getTime();
           });
 
           this.chatList = chats
@@ -69,7 +69,7 @@ export class ChatService {
         chat.messages.sort((message1:IMessage, message2:IMessage) => {
           const c = new Date(message1.createdDate);
           const d = new Date(message2.createdDate);
-          return c.getTime() - d.getTime();
+          return d.getTime() - c.getTime();
         });
         this.chatViewing = chat
         this.getAccountsChats()
@@ -118,7 +118,7 @@ export class ChatService {
             chat.messages.sort((message1: IMessage, message2: IMessage) => {
               const c = new Date(message1.createdDate);
               const d = new Date(message2.createdDate);
-              return c.getTime() - d.getTime();
+              return d.getTime() - c.getTime();
             });
           }
           chats.sort((chat1: IChat, chat2: IChat) => {

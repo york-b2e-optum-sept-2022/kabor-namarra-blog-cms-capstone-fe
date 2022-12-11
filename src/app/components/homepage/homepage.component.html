@@ -63,41 +63,44 @@
       <div class="sideButtons"><mat-icon class="sideIcons">exit_to_app</mat-icon>Sign out</div>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="mainContent"><div *ngIf="!viewingChats">
-    <div *ngIf="!viewUsers">
-      <div *ngIf="!creatingBlog">
-        <div *ngIf="!viewingBlog">
-<!--          <div class="blogSearch">-->
-<!--            <div class="blogSearchComp">-->
-<!--              <div id="searchBar">-->
-<!--                <input id="searchBox" placeholder="search">-->
-<!--              </div>-->
-<!--              <div>-->
-<!--                <button *ngIf="!account" mat-raised-button color="primary" disabled>Create Blog</button>-->
-<!--                <button *ngIf="account" mat-raised-button color="primary" >Create Blog</button>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
 
-          <app-blog-list></app-blog-list>
+  <mat-sidenav-content class="mainContent">
+    <div *ngIf="!viewingChats">
+      <div *ngIf="!viewUsers">
+        <div *ngIf="!creatingBlog">
+          <div *ngIf="!viewingBlog">
+  <!--          <div class="blogSearch">-->
+  <!--            <div class="blogSearchComp">-->
+  <!--              <div id="searchBar">-->
+  <!--                <input id="searchBox" placeholder="search">-->
+  <!--              </div>-->
+  <!--              <div>-->
+  <!--                <button *ngIf="!account" mat-raised-button color="primary" disabled>Create Blog</button>-->
+  <!--                <button *ngIf="account" mat-raised-button color="primary" >Create Blog</button>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+
+            <app-blog-list></app-blog-list>
+          </div>
+          <div *ngIf="viewingBlog">
+            <app-blog></app-blog>
+          </div>
         </div>
-        <div *ngIf="viewingBlog">
-          <app-blog></app-blog>
+        <div *ngIf="creatingBlog && account">
+          <app-create-blog></app-create-blog>
         </div>
       </div>
-      <div *ngIf="creatingBlog && account">
-        <app-create-blog></app-create-blog>
+
+      <div *ngIf="viewUsers">
+        <app-accounts-list></app-accounts-list>
       </div>
     </div>
 
-    <div *ngIf="viewUsers">
-      <app-accounts-list></app-accounts-list>
-    </div>
-  </div>
-
-    <div *ngIf="viewingChats">
+    <div *ngIf="viewingChats" class="chatListStyle">
       <app-chat-list></app-chat-list>
-    </div></mat-sidenav-content>
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
 
