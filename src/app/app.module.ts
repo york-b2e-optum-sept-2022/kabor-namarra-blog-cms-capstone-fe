@@ -18,6 +18,10 @@ import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageComponent } from './components/message/message.component';
 import { ChatDisplayComponent } from './components/chat-display/chat-display.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -37,11 +41,15 @@ import { ChatDisplayComponent } from './components/chat-display/chat-display.com
     MessageComponent,
     ChatDisplayComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatSidenavModule,
+        MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

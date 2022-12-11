@@ -1,0 +1,115 @@
+.homepage-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidebar{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 80%;
+}
+
+.mainContent{
+  position: absolute;
+  padding: 20px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /*background-color: white;*/
+}
+
+#usersButton{
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.users-button:hover{
+  background: #EDEDED;
+  cursor: pointer;
+}
+
+.users-button{
+  display: grid;
+}
+#chatsButton{
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.chats-button:hover{
+  background: #EDEDED;
+  cursor: pointer;
+}
+
+.chats-button {
+  display: grid;
+}
+
+#signOut{
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.signOut:hover{
+  background: rosybrown;
+  cursor: pointer;
+}
+
+.signOut {
+  display: grid;
+  position: fixed;
+  width: 20%;
+  bottom: 0;
+}
+
+#createBlogButton{
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.createBlog-button:hover{
+  background: #EDEDED;
+  cursor: pointer;
+}
+
+.createBlog-button {
+  display: grid;
+}
+#profile-button{
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+}
+
+#signIn-button{
+
+  /*margin: 10px;*/
+  /*padding-right: 5%;*/
+  /*padding-left: 5%;*/
+  width: fit-content;
+  height: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  padding: 10px;
+  font-size: 200%;
+}
+.profile-box{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  outline: 10px solid #D9D9D9;
+  background: #EDEDED;
+
+  height: 20%;
+}
