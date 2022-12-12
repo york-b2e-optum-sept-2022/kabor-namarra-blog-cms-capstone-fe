@@ -48,19 +48,19 @@ export class BlogService {
       },
       error: (err) => {
         alert("There was a server error while trying to retrieve blogs. Please try again later.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
   createBlog(title: string, body:string, authorID: number){
     this.http.createBlog(title, body, authorID).pipe(first()).subscribe({
       next: (blog) => {
-        console.log(blog)
+        // console.log(blog)
         this.onDoneCreatingBlog()
       },
       error: (err) => {
         alert("There was a server error while trying to create blog. Please try again later.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -79,7 +79,7 @@ export class BlogService {
       },
       error: (err) => {
         alert("There was a server error while trying to update blog. Please try again later.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -90,7 +90,7 @@ export class BlogService {
       },
       error: (err) => {
         alert("There was a server error while trying to delete blog. Please try again later.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -98,13 +98,13 @@ export class BlogService {
   createComment(body:string,authorID: number, blogID: number){
     this.http.createComment(body, authorID, blogID).pipe(first()).subscribe({
       next: (comment) => {
-        console.log(comment)
+        // console.log(comment)
         this.blogViewed.comments.splice(0,0,comment);
         this.getBlogViewed()
       },
       error: (err) => {
         alert("There was a server error while trying to create comment. Blog might have been deleted. Please refresh page or go to the home screen.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -112,12 +112,12 @@ export class BlogService {
   updateComment(comment: IComment){
     this.http.updateComment(comment).pipe(first()).subscribe({
       next: (comment) => {
-        console.log(comment)
+        // console.log(comment)
         this.blogViewed.comments.splice(this.blogViewed.comments.findIndex(element => element.id === comment.id),1,comment);
       },
       error: (err) => {
         alert("There was a server error while trying to update comment. Blog might have been deleted. Please refresh page or go to the home screen.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -130,7 +130,7 @@ export class BlogService {
       },
       error: (err) => {
         alert("There was a server error while trying to delete comment. Blog might have been deleted. Please refresh page or go to the home screen.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }

@@ -27,15 +27,12 @@ export class HomepageComponent implements OnInit, OnDestroy{
       if(account === null){
         this.onSignOut()
       }
-      // console.log(this.account)
     })
     this.blogService.$viewingBlog.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.viewingBlog = viewing;
-      console.log("yes")
     })
     this.blogService.$creatingBlog.pipe(takeUntil(this.onDestroy)).subscribe(creating =>{
       this.creatingBlog = creating;
-      console.log("creating")
     })
     this.accountService.$viewingAccountList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.viewUsers = viewing;

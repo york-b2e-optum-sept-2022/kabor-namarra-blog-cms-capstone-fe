@@ -38,7 +38,7 @@
       <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
       <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
     </div>
-    <textarea id="commentField" [(ngModel)]="comment.body"></textarea>
+    <textarea maxlength="120" id="commentField" [(ngModel)]="comment.body"></textarea>
   </div>
 </div>
 

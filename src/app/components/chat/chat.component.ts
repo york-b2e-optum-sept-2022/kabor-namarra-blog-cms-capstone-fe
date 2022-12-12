@@ -23,23 +23,15 @@ export class ChatComponent implements OnInit,OnDestroy{
   constructor(public chatService: ChatService,public accountService: AccountService) {
     this.chatService.$chatViewing.pipe(takeUntil(this.onDestroy)).subscribe(chat =>{
       this.chat = chat;
-      console.log("got 1")
-      console.log(this.chat)
     })
     this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.account = account;
-      console.log("got 2")
-      console.log(this.account)
     })
     this.chatService.$accountReceiving.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.receiver = account;
-      console.log("got 3")
-      console.log(this.receiver)
     })
-    this.chatService.$viewingNewChat.pipe().pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+    this.chatService.$viewingNewChat.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.newChat = viewing;
-      console.log("got 4")
-      console.log(this.newChat)
     })
   }
 

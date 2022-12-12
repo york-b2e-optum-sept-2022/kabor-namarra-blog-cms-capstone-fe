@@ -31,7 +31,6 @@ export class AccountsBlogsComponent {
 
   ngOnInit() {
     this.blogService.getAccountsBlogs()
-    // this.blogService.getBlogs()
   }
 
   onSearchTextChange(text:string){

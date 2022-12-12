@@ -39,7 +39,7 @@ export class AccountService {
   onLoginClickService(){
     this.loggingIn = !this.loggingIn;
     this.$loggingIn.next(this.loggingIn)
-    console.log("1")
+    // console.log("1")
   }
 
   onRegisterClickService(){
@@ -50,7 +50,7 @@ export class AccountService {
   onLogged(){
     this.logged = !this.logged;
     this.$logged.next(this.logged);
-    console.log("2")
+    // console.log("2")
   }
 
   onLogoutClick(){
@@ -67,7 +67,7 @@ export class AccountService {
       },
       error: (err) => {
         alert("There was an error while you logging in. Try using a different password.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -81,7 +81,7 @@ export class AccountService {
       },
       error: (err) => {
         alert("There was an error creating your account. Please try using a different username.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }
@@ -94,7 +94,7 @@ export class AccountService {
       },
       error: (err) => {
         alert("There was a server error while trying to retrieve users. Please try again another time.")
-        console.error(err)
+        // console.error(err)
       }
     })
   }

@@ -52,18 +52,13 @@ export class BlogComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy() {
     if(this.blog.author.id !== this.account?.id){
-      // console.log("id!")
       if(this.account?.id) {
-        // console.log("id good")
         if(!this.blog.viewerID.find(element => element === this.account?.id)) {
           this.blog.viewerID.push(this.account.id)
-          console.log(this.blog)
           this.blogService.updateBlog(this.blog)
-          console.log("updated views")
         }
       }
     }
-    console.log("out")
     this.onDestroy.next(null);
     this.onDestroy.complete();
   }
