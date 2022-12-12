@@ -41,7 +41,7 @@
 
         <div class="blogTop">
           <div id="blogUserInfo">
-            <h2 class="blogCreated">@{{blog.author.username}}</h2>
+            <h2 class="blogCreated" id="creatorUser" (click)="onUserClick()">@{{blog.author.username}}</h2>
           </div>
           <div id="blogInteractions">
             <div class="blogCreated"> <mat-icon id="blogIcon">remove_red_eye</mat-icon>{{blog.viewerID.length}}</div>
@@ -72,7 +72,7 @@
           </h3>
         </div>
 
-        <div class="commentList">
+        <div *ngIf="blog.comments.length !== 0" class="commentList">
           <app-comment *ngFor="let comment of blog.comments"
                        [comment] = comment
                        [account] = account

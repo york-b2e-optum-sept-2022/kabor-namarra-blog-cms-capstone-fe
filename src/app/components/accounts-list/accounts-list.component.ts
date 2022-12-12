@@ -14,6 +14,7 @@ export class AccountsListComponent implements OnInit, OnDestroy{
   accountsList: IAccount[] = [];
   account: IAccount|null = null;
   messaging: boolean = false;
+  searchText: string = "";
 
   onDestroy = new Subject();
 
@@ -39,6 +40,10 @@ export class AccountsListComponent implements OnInit, OnDestroy{
 
   onBackClick(){
     this.accountService.viewingUsers();
+  }
+
+  onSearchTextChange(text:string){
+    this.accountService.searchAccountList(text)
   }
 
 

@@ -116,3 +116,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+#creatorUser:hover{
+  color: #7F8FB9;
+  cursor: pointer;
+}

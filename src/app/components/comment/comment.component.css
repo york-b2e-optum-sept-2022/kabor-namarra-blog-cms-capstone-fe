@@ -31,3 +31,13 @@
   padding: 5px;
 }
 
+#creatorUser:hover{
+  color: #7F8FB9;
+  cursor: pointer;
+}
+
+#creatorUser2:hover{
+  color: #7F8FB9;
+  cursor: pointer;
+}
+

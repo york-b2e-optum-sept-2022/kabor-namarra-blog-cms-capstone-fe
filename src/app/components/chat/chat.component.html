@@ -1,9 +1,9 @@
-<button mat-raised-button color="primary" *ngIf="!receiver" (click)="onBackClick()">CBack</button>
-<button mat-raised-button color="primary" *ngIf="receiver" (click)="onLeaveNewChat()">EBack</button>
+<button mat-raised-button color="primary" *ngIf="!receiver" (click)="onBackClick()">Back</button>
+<button mat-raised-button color="primary" *ngIf="receiver" (click)="onLeaveNewChat()">Back</button>
 
 <div *ngIf="!newChat && chat" class="wholeChat">
   <div *ngFor="let messenger of chat.messenger">
-    <h2 *ngIf="messenger.id !== account?.id">@{{messenger.username}}</h2>
+    <h2 *ngIf="messenger.id !== account?.id" class="userAccount" (click)="onUserClick()">@{{messenger.username}}</h2>
   </div>
   <div class="messageArea">
     Chat:
@@ -20,7 +20,7 @@
 </div>
 
 <div *ngIf="newChat ">
-  <h2>@{{receiver?.username}}</h2>
+  <h2 class="userAccount" (click)="onUserClick()">@{{receiver?.username}}</h2>
   <div class="messageArea">
     Chat:
     <textarea class="textArea" [(ngModel)]="messageText"></textarea>

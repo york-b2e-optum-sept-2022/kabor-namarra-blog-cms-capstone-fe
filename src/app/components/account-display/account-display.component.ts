@@ -42,6 +42,11 @@ export class AccountDisplayComponent implements OnInit, OnDestroy{
     }
     // this.chatService.onViewingNewChat();
   }
+  onUserClick(){
+    if(this.account.id) {
+      this.accountService.onViewingProfile(this.account.id)
+    }
+  }
 
 
 }

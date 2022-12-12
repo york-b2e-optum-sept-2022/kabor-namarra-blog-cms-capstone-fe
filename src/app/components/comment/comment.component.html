@@ -8,7 +8,7 @@
       <button mat-raised-button color="warn" (click)="onDeleteClick()">Yes</button>
     </div>
     <div class="commentHeader">
-      <h3 class="commentHeaderText">@{{comment.author.username}}</h3>
+      <h3 class="commentHeaderText" id="creatorUser" (click)="onUserClick()">@{{comment.author.username}}</h3>
       <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
       <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
     </div>
@@ -20,7 +20,7 @@
 
   <div *ngIf="comment.author.id !== account?.id && !editingComment">
     <div class="commentHeader">
-      <h3 class="commentHeaderText">@{{comment.author.username}}</h3>
+      <h3 class="commentHeaderText" id="creatorUser2" (click)="onUserClick()" >@{{comment.author.username}}</h3>
       <div class="commentHeaderText" *ngIf="!comment.updatedDate">{{comment.createdDate | date}}</div>
       <div class="commentHeaderText" *ngIf="comment.updatedDate">{{comment.createdDate | date}} (edited)</div>
     </div>

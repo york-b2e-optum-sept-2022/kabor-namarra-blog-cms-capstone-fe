@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IBlog} from "../../interfaces/IBlog";
 import {IAccount} from "../../interfaces/IAccount";
 import {BlogService} from "../../blog.service";
@@ -10,7 +10,7 @@ import {Subject, takeUntil} from "rxjs";
   templateUrl: './create-blog.component.html',
   styleUrls: ['./create-blog.component.css']
 })
-export class CreateBlogComponent implements OnInit{
+export class CreateBlogComponent implements OnInit, OnDestroy{
 
   title: string = "";
   body: string = "";
@@ -27,9 +27,13 @@ export class CreateBlogComponent implements OnInit{
   ngOnInit() {
     this.accountService.sendAccount()
   }
+  ngOnDestroy() {
+    this.onDestroy.next(null);
+    this.onDestroy.complete();
+  }
 
   onCancelClick(){
-    this.blogService.onCreatingBlog()
+    this.blogService.onDoneCreatingBlog()
   }
 
   onCreateClick(){
@@ -39,6 +43,7 @@ export class CreateBlogComponent implements OnInit{
       }
     }
   }
+
 
 
 }

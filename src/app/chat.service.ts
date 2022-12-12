@@ -87,6 +87,8 @@ export class ChatService {
 
   onViewingChatList(){
     this.viewingChatList = !this.viewingChatList
+    if(this.viewingChatList){
+    }
     this.sendViewingChatList()
   }
 
@@ -102,6 +104,13 @@ export class ChatService {
   onViewingChat(){
     this.viewingChat = !this.viewingChat;
     this.$viewingChat.next(this.viewingChat)
+  }
+  setNotChat(){
+    this.viewingChat = false;
+    this.viewingChatList = false;
+    this.viewingChatFromList = false;
+    this.viewingNewChat = false;
+    this.accountReceiving = null;
   }
 
   sendChatViewing(){

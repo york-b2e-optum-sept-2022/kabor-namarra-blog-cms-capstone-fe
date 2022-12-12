@@ -14,6 +14,7 @@ export class BlogListComponent implements OnInit, OnDestroy{
 
   blogList: IBlog[] = [];
   account: IAccount| null = null;
+  searchText: string = "";
 
   onDestroy = new Subject();
 
@@ -34,6 +35,14 @@ export class BlogListComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.accountService.sendAccount();
     this.blogService.getBlogs()
+  }
+
+  onSearchTextChange(text:string){
+    this.blogService.blogListSearch(text);
+  }
+
+  onCreateBlog(){
+    this.blogService.onStartCreatingBlog()
   }
 
 }

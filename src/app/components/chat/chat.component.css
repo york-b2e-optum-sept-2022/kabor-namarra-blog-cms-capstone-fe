@@ -19,3 +19,8 @@ textarea{
 button{
   margin: 15px;
 }
+
+.userAccount:hover{
+  color: #7F8FB9;
+  cursor: pointer;
+}

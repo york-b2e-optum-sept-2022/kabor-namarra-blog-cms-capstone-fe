@@ -1,11 +1,16 @@
 <div class="blogSearch">
   <div class="blogSearchComp">
     <div id="searchBar">
-      <input id="searchBox" placeholder="search">
+<!--      <input id="searchBox" placeholder="search">-->
+      <input
+        [ngModel]="searchText"
+        (ngModelChange)="onSearchTextChange($event)"
+        type="text" id="searchBox" placeholder="search"
+      >
     </div>
     <div>
       <button *ngIf="!account" mat-raised-button color="primary" disabled>Create Blog</button>
-      <button *ngIf="account" mat-raised-button color="primary" >Create Blog</button>
+      <button *ngIf="account" mat-raised-button color="primary" (click)="onCreateBlog()" >Create Blog</button>
     </div>
   </div>
 </div>

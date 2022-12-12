@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {BlogService} from "../../blog.service";
 import {IComment} from "../../interfaces/IComment";
 import {IAccount} from "../../interfaces/IAccount";
+import {AccountService} from "../../account.service";
 
 @Component({
   selector: 'app-comment',
@@ -15,7 +16,7 @@ export class CommentComponent {
   editingComment: boolean = false;
   deleteCheck: boolean = false;
 
-  constructor(public blogService: BlogService) {
+  constructor(public blogService: BlogService, public accountService: AccountService) {
   }
 
   onEditClick(){
@@ -35,6 +36,12 @@ export class CommentComponent {
   onDeleteClick(){
     if(this.comment.id) {
       this.blogService.deleteComment(this.comment.id)
+    }
+  }
+
+  onUserClick(){
+    if(this.comment.author.id) {
+      this.accountService.onViewingProfile(this.comment.author.id)
     }
   }
 

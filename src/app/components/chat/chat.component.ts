@@ -93,4 +93,15 @@ export class ChatComponent implements OnInit,OnDestroy{
     this.chatService.onViewingChatFromList()
   }
 
+  onUserClick(){
+    console.log(this.receiver?.id)
+    for(let messengers of this.chat.messenger){
+      if (messengers.id !== this.account?.id){
+        if(messengers.id) {
+          this.accountService.onViewingProfile(messengers.id)
+        }
+      }
+    }
+  }
+
 }

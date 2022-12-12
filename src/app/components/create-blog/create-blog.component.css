@@ -1,3 +1,53 @@
-.blogSection{
-  background-color: rosybrown;
+.blogSection {
+  /*background-color: rosybrown;*/
+  /*display: flex;*/
+  /*background: rosybrown;*/
+  /*background: #7F8FB9;*/
+  /*height: 100%;*/
+  padding: 15px;
+  /*align-items: center;}*/
+}
+
+.blogHeader{
+  display: flex;
+  justify-content: center;
+}
+.headerContent{
+  display: grid;
+  text-align: center;
+}
+
+.blogTop{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5%;
+  padding-right: 5%;
+  /*min-height: 50px;*/
+  /*max-height: 70px;*/
+}
+
+#blogUserInfo{
+  display: flex;
+}
+
+.blogBody{
+  background: white;
+  border-radius: 15px;
+  min-height: 200px;
+  padding: 15px 8%;
+}
+
+#titleField{
+  font-size: 120%;
+}
+
+#bodyField{
+  width: 100%;
+  height: 170px;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.editButtons{
+  margin: 5px;
 }

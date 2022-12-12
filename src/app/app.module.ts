@@ -23,6 +23,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { ProfileComponent } from './components/profile/profile.component';
+import { AccountsBlogsComponent } from './components/accounts-blogs/accounts-blogs.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MatIconModule} from "@angular/material/icon";
     ChatListComponent,
     ChatComponent,
     MessageComponent,
-    ChatDisplayComponent
+    ChatDisplayComponent,
+    ProfileComponent,
+    AccountsBlogsComponent
   ],
   imports: [
     BrowserModule,

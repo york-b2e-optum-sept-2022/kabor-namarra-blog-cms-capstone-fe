@@ -100,5 +100,10 @@ export class BlogComponent implements OnInit, OnDestroy{
       this.blogService.deleteBlog(this.blog.id)
     }
   }
+  onUserClick(){
+    if(this.blog.author.id) {
+      this.accountService.onViewingProfile(this.blog.author.id)
+    }
+  }
 
 }

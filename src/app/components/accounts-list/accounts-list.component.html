@@ -1,14 +1,36 @@
-<div *ngIf="!messaging">
-  <button (click)="onBackClick()">Back</button>
-  <div *ngFor="let accountDisplay of accountsList">
-    <div *ngIf="account?.id !== accountDisplay.id">
-      <app-account-display
-        [account]="accountDisplay"
-      ></app-account-display>
+<div *ngIf="!messaging" class="wholeAccounts">
+  <button id="backButton" mat-flat-button color="primary" (click)="onBackClick()">Back</button>
+  <div class="blogSearch">
+    <div class="blogSearchComp">
+      <div id="searchBar">
+        <!--      <input id="searchBox" placeholder="search">-->
+        <h3>
+          Search:
+        </h3>
+        <input
+          [ngModel]="searchText"
+          (ngModelChange)="onSearchTextChange($event)"
+          type="text" id="searchBox" placeholder="search"
+        >
+      </div>
     </div>
   </div>
-</div>
+  <div class="usersList">
+    <div  *ngIf="accountsList.length !== 0" class="usersDisplay">
 
-<div *ngIf="messaging">
-  <app-chat></app-chat>
+      <div *ngFor="let accountDisplay of accountsList">
+        <div *ngIf="account?.id !== accountDisplay.id" class="accountDisplay">
+          <app-account-display
+            [account]="accountDisplay"
+          ></app-account-display>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="messaging" class="chatStyle">
+  <div  class="chatDisplayFromList">
+    <app-chat></app-chat>
+  </div>
 </div>

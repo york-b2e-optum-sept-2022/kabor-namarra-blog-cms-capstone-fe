@@ -33,6 +33,13 @@
 div{
   width: 100%;
 }
+.home-button:hover{
+  background: #EDEDED;
+  cursor: pointer;
+}
+.home-button{
+  display: grid;
+}
 
 .sideButtons{
   display: flex;
@@ -167,4 +174,9 @@ div{
 
 .chatListStyle{
   background: #7F8FB9;
+  height: 100%;
+}
+.accountListStyle{
+  background: #7F8FB9;
+  height: 100%;
 }

@@ -3,6 +3,7 @@ import {IBlog} from "./interfaces/IBlog";
 import {first, Subject} from "rxjs";
 import {HttpService} from "./http.service";
 import {IComment} from "./interfaces/IComment";
+import {IAccount} from "./interfaces/IAccount";
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ export class BlogService {
   private blogList: IBlog[] = [];
   private viewingBlog: boolean = false;
   private blogViewed!: IBlog;
+  private accountViewingID!: number;
+  private accountsBlogs: IBlog[] = [];
 
   $blogList = new Subject<IBlog[]>();
   $viewingBlog = new Subject<boolean>();
   $blogViewed = new Subject<IBlog>();
   $creatingBlog = new Subject<boolean>();
+  $accountsBlogs = new Subject<IBlog[]>();
 
   $addComment = new Subject<IComment>();
   $deleteComment = new Subject<number>();
@@ -51,7 +55,7 @@ export class BlogService {
     this.http.createBlog(title, body, authorID).pipe(first()).subscribe({
       next: (blog) => {
         console.log(blog)
-        this.onCreatingBlog()
+        this.onDoneCreatingBlog()
       },
       error: (err) => {
         console.error(err)
@@ -124,6 +128,9 @@ export class BlogService {
     })
   }
 
+
+
+  //Blog viewing
   openBlog(blogId: number){
     const blog = this.blogList.find(blog => blog.id === blogId);
     if(blog){
@@ -131,7 +138,10 @@ export class BlogService {
     }
     this.onViewBlog()
   }
-
+  setViewingBlog(viewing: boolean){
+    this.viewingBlog = viewing;
+    this.sendIfViewingBlog()
+  }
   onViewBlog(){
     this.viewingBlog = !this.viewingBlog
     this.sendIfViewingBlog()
@@ -139,12 +149,35 @@ export class BlogService {
   sendIfViewingBlog(){
     this.$viewingBlog.next(this.viewingBlog)
   }
-
   getBlogViewed(){
     this.$blogViewed.next(this.blogViewed);
   }
 
-  onCreatingBlog(){
+
+
+
+
+
+  onDoneCreatingBlog(){
     this.$creatingBlog.next(false);
+  }
+  onStartCreatingBlog(){
+    this.$creatingBlog.next(true);
+  }
+
+  blogListSearch(text:string){
+    this.$blogList.next(this.blogList.filter(blog => blog.title.toUpperCase().includes(text.toUpperCase())))
+  }
+  blogAccountListSearch(text:string){
+    this.$accountsBlogs.next(this.accountsBlogs.filter(blog => blog.title.toUpperCase().includes(text.toUpperCase())))
+  }
+
+  setAccountViewing(account: number){
+    this.accountViewingID = account
+  }
+
+  getAccountsBlogs(){
+    this.accountsBlogs = this.blogList.filter(blogs => blogs.author.id === this.accountViewingID)
+    this.$accountsBlogs.next(this.accountsBlogs)
   }
 }

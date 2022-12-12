@@ -17,6 +17,7 @@ export class HomepageComponent implements OnInit, OnDestroy{
   creatingBlog: boolean = false;
   viewUsers: boolean = false;
   viewingChats: boolean = false;
+  viewingProfile: boolean = false;
 
   onDestroy = new Subject();
 
@@ -24,8 +25,7 @@ export class HomepageComponent implements OnInit, OnDestroy{
     this.accountService.$userAccount.pipe(takeUntil(this.onDestroy)).subscribe(account =>{
       this.account = account;
       if(account === null){
-        this.creatingBlog = false;
-        this.viewingChats = false;
+        this.onSignOut()
       }
       // console.log(this.account)
     })
@@ -35,6 +35,7 @@ export class HomepageComponent implements OnInit, OnDestroy{
     })
     this.blogService.$creatingBlog.pipe(takeUntil(this.onDestroy)).subscribe(creating =>{
       this.creatingBlog = creating;
+      console.log("creating")
     })
     this.accountService.$viewingAccountList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.viewUsers = viewing;
@@ -42,11 +43,18 @@ export class HomepageComponent implements OnInit, OnDestroy{
     this.chatService.$viewingChatList.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
       this.viewingChats = viewing;
     })
+    this.accountService.$viewingProfile.pipe(takeUntil(this.onDestroy)).subscribe(viewing =>{
+      if(viewing){
+        this.whenViewProfile()
+      }
+      this.viewingProfile = viewing;
+    })
   }
   ngOnInit() {
     this.accountService.sendViewingUsers()
     this.blogService.sendIfViewingBlog()
     this.accountService.sendAccount();
+    this.accountService.getAllAccounts()
   }
 
   ngOnDestroy() {
@@ -62,20 +70,138 @@ export class HomepageComponent implements OnInit, OnDestroy{
     this.accountService.onLogoutClick();
   }
 
-  onClickCheck(){
-    console.log(this.account === null)
-  }
-
   onCreateBlogClick(){
+    if(this.viewingBlog){
+
+      this.viewingBlog = false;
+      this.blogService.setViewingBlog(false)
+    }
+    if(this.viewingChats){
+      this.viewingChats = false;
+      this.chatService.setNotChat()
+    }
+    if(this.viewUsers){
+      this.viewUsers =false;
+      this.accountService.setViewingUsers()
+      this.chatService.setNotChat()
+    }
+    if(this.viewingProfile){
+      this.viewingProfile = false;
+      this.accountService.setViewingProfile()
+    }
     this.creatingBlog = !this.creatingBlog
+
   }
 
   onUsersClick(){
+    if(this.viewingBlog){
+      this.viewingBlog = false;
+      this.blogService.setViewingBlog(false)
+    }
+    if(this.creatingBlog){
+      this.creatingBlog = false;
+    }
+
+    if(this.viewingChats){
+      this.viewingChats = false;
+      this.chatService.setNotChat()
+    }
+    if(this.viewingProfile){
+      this.viewingProfile = false;
+      this.accountService.setViewingProfile()
+    }
     this.accountService.viewingUsers();
+
   }
 
   onChatsClick(){
+    if(this.viewingBlog){
+      this.viewingBlog = false;
+      this.blogService.setViewingBlog(false)
+    }
+    if(this.creatingBlog){
+      this.creatingBlog = false;
+    }
+    if(this.viewUsers){
+      this.viewUsers =false;
+      this.accountService.setViewingUsers()
+      this.chatService.setNotChat()
+    }
+    if(this.viewingProfile){
+      this.viewingProfile = false;
+      this.accountService.setViewingProfile()
+    }
     this.chatService.onViewingChatList();
+  }
+
+  onViewProfile(){
+    // this.whenViewProfile()
+    if(this.account?.id){
+      this.accountService.onViewingProfile(this.account?.id);
+    }
+  }
+
+  whenViewProfile(){
+    if(this.viewingBlog){
+      this.viewingBlog = false;
+      this.blogService.setViewingBlog(false)
+    }
+    if(this.creatingBlog){
+      this.creatingBlog = false;
+    }
+    if(this.viewingChats){
+      this.viewingChats = false;
+      this.chatService.setNotChat()
+    }
+    if(this.viewUsers){
+      this.viewUsers =false;
+      this.accountService.setViewingUsers()
+      this.chatService.setNotChat()
+    }
+  }
+
+  onHomeClick(){
+    if(this.viewingBlog){
+      this.viewingBlog = false;
+      this.blogService.setViewingBlog(false)
+    }
+    if(this.creatingBlog){
+      this.creatingBlog = false;
+    }
+    if(this.viewingChats){
+      this.viewingChats = false;
+      this.chatService.setNotChat()
+    }
+    if(this.viewUsers){
+      this.viewUsers =false;
+      this.accountService.setViewingUsers()
+      this.chatService.setNotChat()
+    }
+    if(this.viewingProfile){
+      this.viewingProfile = false;
+      this.accountService.setViewingProfile()
+    }
+  }
+
+  onSignOut(){
+    // if(this.viewingBlog){
+    //   this.blogService.setViewingBlog(false)
+    // }
+    if(this.creatingBlog){
+      this.creatingBlog = false;
+    }
+    if(this.viewingChats){
+      this.viewingChats = false;
+      this.chatService.setNotChat()
+    }
+    // if(this.viewUsers){
+    //   this.accountService.setViewingUsers()
+    //   this.chatService.setNotChat()
+    // }
+    if(this.viewingProfile){
+      this.viewingProfile = false;
+      this.accountService.setViewingProfile()
+    }
   }
 
 }
