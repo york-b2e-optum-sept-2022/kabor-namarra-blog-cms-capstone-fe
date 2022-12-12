@@ -1,10 +1,23 @@
-<div>
-  Username:
-  <input [(ngModel)]="username" placeholder="username">
-  <br>
-  Password:
-  <input [(ngModel)]="password" placeholder="password">
+<div class="wholeLogin">
+  <div class="loginPart">
+    <div class="loginField">
+
+      <div class="loginComp">
+        Username:
+        <input [(ngModel)]="username" placeholder="username">
+      </div>
+
+      <div class="loginComp">
+        Password:
+        <input [(ngModel)]="password" placeholder="password">
+      </div>
+    </div>
+    <div class="loginButtons">
+      <button mat-raised-button (click)="onBackClick()">Back</button>
+      <button mat-raised-button color="primary" (click)="onRegisterClick()">Register</button>
+      <button mat-raised-button color="primary" (click)="onLoginClick()">Login</button>
+    </div>
+
+  </div>
+
 </div>
-<button (click)="onBackClick()">Back</button>
-<button (click)="onRegisterClick()">Register</button>
-<button (click)="onLoginClick()">Login</button>
