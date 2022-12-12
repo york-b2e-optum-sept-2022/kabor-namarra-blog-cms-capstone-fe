@@ -47,7 +47,7 @@
         <h1>
           @{{account.username}}
         </h1>
-        <button id="profile-button" mat-flat-button color="primary" (click)="onViewProfile()">View Profile</button>
+        <button id="profile-button" mat-raised-button color="primary" (click)="onViewProfile()">View Profile</button>
       </div>
     </div>
     <div class="createBlog-button" *ngIf="account && !creatingBlog" (click)="onCreateBlogClick()">
