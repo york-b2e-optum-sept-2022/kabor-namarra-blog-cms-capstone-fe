@@ -1,0 +1,15 @@
+<div class="blogSearch">
+  <div class="blogSearchComp">
+    <div id="searchBar">
+      <!--      <input id="searchBox" placeholder="search">-->
+      <input
+        [ngModel]="searchText"
+        (ngModelChange)="onSearchTextChange($event)"
+        type="text" id="searchBox" placeholder="search"
+      >
+    </div>
+  </div>
+</div>
+<app-blog-display *ngFor="let blog of blogList"
+                  [blogDisplay] = blog
+></app-blog-display>

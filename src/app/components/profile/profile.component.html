@@ -1,0 +1,18 @@
+
+<div class="profileDisplay">
+  <button mat-flat-button color="primary"  class="backButton" (click)="onBackClick()">Back</button>
+  <div class="profileHeader">
+    <div class="userInfo">
+      <h1>
+        @{{accountViewing.username}}
+      </h1>
+      <h4>
+        {{accountViewing.firstname}} {{accountViewing.lastname}}
+      </h4>
+    </div>
+  </div>
+  <div>
+    <app-accounts-blogs></app-accounts-blogs>
+  </div>
+
+</div>

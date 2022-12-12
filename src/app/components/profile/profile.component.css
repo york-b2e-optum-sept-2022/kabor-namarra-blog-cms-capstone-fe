@@ -1,0 +1,23 @@
+.profileDisplay{
+  display: grid;
+  padding: 15px;
+}
+
+.profileHeader{
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  background: #7F8FB9;
+  border: white solid 1px;
+  width: 60%;
+  border-radius: 15px;
+}
+.userInfo{
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.backButton{
+  width: fit-content;
+}
