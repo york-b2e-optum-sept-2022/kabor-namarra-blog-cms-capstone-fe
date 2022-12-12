@@ -1,0 +1,33 @@
+.wholeRegister{
+  background: #7F8FB9;
+  display: grid;
+  align-items: center;
+  height: 100%;
+}
+
+.registerPart{
+  display: grid;
+  background: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 20px;
+  width: fit-content;
+  border-radius: 15px;
+}
+
+
+.registerComp{
+  margin: 15px;
+  font-size: 150%;
+}
+input{
+  font-size: 120%;
+  border-radius: 10px;
+  border: #BABABA solid 1px;
+  padding: 5px;
+}
+
+button{
+  margin: 15px;
+}

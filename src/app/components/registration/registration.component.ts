@@ -19,6 +19,9 @@ export class RegistrationComponent {
   }
 
   onRegisterClick(){
+    if(this.account.username === "" || this.account.password === "") {
+      alert("You must fill in the username and the password field to register.")
+    }
     if(this.account.username !== "" && this.account.password !== "") {
       this.accountService.onRegister(this.account)
     }
