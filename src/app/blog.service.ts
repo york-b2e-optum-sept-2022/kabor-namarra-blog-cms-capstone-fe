@@ -47,6 +47,7 @@ export class BlogService {
         this.$blogList.next(this.blogList);
       },
       error: (err) => {
+        alert("There was a server error while trying to retrieve blogs. Please try again later.")
         console.error(err)
       }
     })
@@ -58,6 +59,7 @@ export class BlogService {
         this.onDoneCreatingBlog()
       },
       error: (err) => {
+        alert("There was a server error while trying to create blog. Please try again later.")
         console.error(err)
       }
     })
@@ -76,6 +78,7 @@ export class BlogService {
         this.getBlogs()
       },
       error: (err) => {
+        alert("There was a server error while trying to update blog. Please try again later.")
         console.error(err)
       }
     })
@@ -86,6 +89,7 @@ export class BlogService {
         this.onViewBlog()
       },
       error: (err) => {
+        alert("There was a server error while trying to delete blog. Please try again later.")
         console.error(err)
       }
     })
@@ -99,6 +103,7 @@ export class BlogService {
         this.getBlogViewed()
       },
       error: (err) => {
+        alert("There was a server error while trying to create comment. Blog might have been deleted. Please refresh page or go to the home screen.")
         console.error(err)
       }
     })
@@ -111,6 +116,7 @@ export class BlogService {
         this.blogViewed.comments.splice(this.blogViewed.comments.findIndex(element => element.id === comment.id),1,comment);
       },
       error: (err) => {
+        alert("There was a server error while trying to update comment. Blog might have been deleted. Please refresh page or go to the home screen.")
         console.error(err)
       }
     })
@@ -123,6 +129,7 @@ export class BlogService {
         this.getBlogViewed()
       },
       error: (err) => {
+        alert("There was a server error while trying to delete comment. Blog might have been deleted. Please refresh page or go to the home screen.")
         console.error(err)
       }
     })

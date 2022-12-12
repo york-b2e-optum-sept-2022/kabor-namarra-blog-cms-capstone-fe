@@ -21,7 +21,7 @@
     <div class="headerContent">
       <h1>
         Title:
-        <input id="titleField" [(ngModel)]="title">
+        <input maxlength="80" id="titleField" [(ngModel)]="title">
       </h1>
     </div>
   </div>
@@ -29,6 +29,6 @@
     Body:
   </h3>
   <div class="blogBody">
-    <textarea id="bodyField" [(ngModel)]="body"></textarea>
+    <textarea maxlength="240" id="bodyField" [(ngModel)]="body"></textarea>
   </div>
 </div>

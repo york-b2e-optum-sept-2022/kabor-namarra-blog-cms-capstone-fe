@@ -57,6 +57,7 @@ export class ChatService {
           this.sendAccountsChats()
         },
         error: (err) => {
+          alert("There was a server error while trying to retrieve chats. Please try again later.")
           console.error(err)
         }
       })
@@ -76,6 +77,7 @@ export class ChatService {
         this.$chatViewing.next(this.chatViewing)
       },
       error: (err) => {
+        alert("There was a server error while trying to update chat. Please try again later.")
         console.error(err)
       }
     })
@@ -165,6 +167,7 @@ export class ChatService {
 
         },
         error: (err) => {
+          alert("There was a server error while trying to retrieve chats. Please try again later.")
           console.error(err)
         }
       })
@@ -230,6 +233,7 @@ export class ChatService {
 
         },
         error: (err) => {
+          alert("There was a server error while trying to get chats. Please try again later.")
           console.error(err)
         }
       })
@@ -242,6 +246,7 @@ export class ChatService {
           this.sendChatViewing()
         },
         error: (err) => {
+          alert("There was a server error while trying to create chat. Please try again later.")
           console.error(err)
         }
       })

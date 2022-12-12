@@ -19,7 +19,9 @@ export class RegistrationComponent {
   }
 
   onRegisterClick(){
-    this.accountService.onRegister(this.account)
+    if(this.account.username !== "" && this.account.password !== "") {
+      this.accountService.onRegister(this.account)
+    }
   }
 
 }

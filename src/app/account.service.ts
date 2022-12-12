@@ -66,6 +66,7 @@ export class AccountService {
         this.onLoginClickService();
       },
       error: (err) => {
+        alert("There was an error while you logging in. Try using a different password.")
         console.error(err)
       }
     })
@@ -79,6 +80,7 @@ export class AccountService {
         this.onLoginClickService();
       },
       error: (err) => {
+        alert("There was an error creating your account. Please try using a different username.")
         console.error(err)
       }
     })
@@ -91,6 +93,7 @@ export class AccountService {
         this.$accountList.next(this.accountList)
       },
       error: (err) => {
+        alert("There was a server error while trying to retrieve users. Please try again another time.")
         console.error(err)
       }
     })
