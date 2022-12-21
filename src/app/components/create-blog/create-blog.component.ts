@@ -41,6 +41,13 @@ export class CreateBlogComponent implements OnInit, OnDestroy{
       if (this.author?.id) {
         this.blogService.createBlog(this.title, this.body, this.author?.id)
       }
+    }else{
+      if (this.title === ""){
+        alert("Title cannot be empty")
+      }
+      if(this.body === ""){
+        alert("Blog body cannot be empty")
+      }
     }
   }
 
