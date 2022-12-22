@@ -15,9 +15,12 @@
 .commentBody{
   /*width: 100px;*/
   /*height: 400px;*/
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 #commentField{

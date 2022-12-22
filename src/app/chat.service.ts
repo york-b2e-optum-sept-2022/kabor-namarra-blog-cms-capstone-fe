@@ -205,6 +205,7 @@ export class ChatService {
     this.viewingChatFromList = !this.viewingChatFromList
     if(!this.viewingChatFromList){
       this.accountReceiving = null;
+      this.viewingNewChat = false;
     }
     this.sendViewingChatFromList()
   }
@@ -218,8 +219,8 @@ export class ChatService {
     if(this.account?.id) {
       this.http.getAccountsChats(this.account?.id).pipe(first()).subscribe({
         next: (chats) => {
-          if(chats.find(chat => chat.messenger.find(account => account.id === receiverID))){
-            for(let chat of this.chatList){
+          // if(chats.find(chat => chat.messenger.find(account => account.id === receiverID))){
+            for(let chat of chats){
               for(let messenger of chat.messenger){
                 if(messenger.id === receiverID){
                   checkForChat = true;
@@ -229,6 +230,17 @@ export class ChatService {
                 }
               }
             }
+          if(!checkForChat){
+            this.http.createChat(receiverID, messageText, messengerID).pipe(first()).subscribe({
+              next: (chat) => {
+                this.chatViewing = chat
+                this.sendChatViewing()
+              },
+              error: (err) => {
+                alert("There was a server error while trying to create chat. Please try again later.")
+                // console.error(err)
+              }
+            })
           }
 
         },
@@ -239,18 +251,18 @@ export class ChatService {
       })
     }
 
-    if(!checkForChat){
-      this.http.createChat(receiverID, messageText, messengerID).pipe(first()).subscribe({
-        next: (chat) => {
-          this.chatViewing = chat
-          this.sendChatViewing()
-        },
-        error: (err) => {
-          alert("There was a server error while trying to create chat. Please try again later.")
-          // console.error(err)
-        }
-      })
-    }
+    // if(!checkForChat){
+    //   this.http.createChat(receiverID, messageText, messengerID).pipe(first()).subscribe({
+    //     next: (chat) => {
+    //       this.chatViewing = chat
+    //       this.sendChatViewing()
+    //     },
+    //     error: (err) => {
+    //       alert("There was a server error while trying to create chat. Please try again later.")
+    //       // console.error(err)
+    //     }
+    //   })
+    // }
   }
 
 
